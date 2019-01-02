@@ -54,7 +54,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="addFC_C">
+    <widget class="QWidget" name="addFCC">
      <widget class="QPushButton" name="menu">
       <property name="geometry">
        <rect>

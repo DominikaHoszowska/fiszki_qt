@@ -16,25 +16,27 @@ public:
     ~MainWindow();
 
 private slots:
-//MENU:
+//menu:
 
     void on_addFC_B_clicked();
 
     void on_startLearning_B_clicked();
 
-
-
+//addFCC:
+    void on_saveAll_B_clicked();
     void on_menu_clicked();
+    void on_addNext_B_clicked();
+
+
+ //startLearning:
 
     void on_menu_2_clicked();
 
 
-    void on_saveAll_B_clicked();
+  //collections:
 
     void on_menu_3_clicked();
 
-
-    void on_addNext_B_clicked();
 
 private:
     Ui::MainWindow *ui;

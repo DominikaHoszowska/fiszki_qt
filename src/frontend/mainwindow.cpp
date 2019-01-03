@@ -77,7 +77,6 @@ void MainWindow::on_menu_3_clicked()
 }
 
 
-
 //learnignCollection:
 
 void MainWindow::on_menu_4_clicked()

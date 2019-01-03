@@ -135,13 +135,19 @@ void MainWindow::on_AddCollection_clicked()
     if(Card::checkCorrectnessW(c))
     {
         this->game_->addCollection(c);
-    }
-    ui->stackedWidget->setCurrentIndex(3);
-    ui->listWidget->clear();
-    std::vector<std::pair<int,std::string>> collections=this->game_->getCollections();
+        ui->stackedWidget->setCurrentIndex(3);
+        ui->listWidget->clear();
+        std::vector<std::pair<int,std::string>> collections=this->game_->getCollections();
 
-    for(std::vector<std::pair<int,std::string>>::iterator i=collections.begin();i!=collections.end();++i)
-    {
-        ui->listWidget->addItem(QString::fromStdString(i->second));
+        for(std::vector<std::pair<int,std::string>>::iterator i=collections.begin();i!=collections.end();++i)
+        {
+            ui->listWidget->addItem(QString::fromStdString(i->second));
+        }
     }
+    else
+    {
+        QMessageBox::information(this,tr("Błąd"),tr("Wprowadź poprawne dane"));
+    }
+
+
 }

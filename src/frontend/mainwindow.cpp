@@ -50,7 +50,7 @@ void MainWindow::on_addNext_B_clicked()
 {
 
     if(Card::checkCorrectnessW(ui->polishI->text().toStdString())&&Card::checkCorrectnessW(ui->englishI->text().toStdString()))
-    {//TODO
+    {
     }
     else
     {

@@ -48,19 +48,39 @@ void MainWindow::on_addNext_B_clicked()
 
 }
 
- //startLearning:
+ //learningMode:
 
 void MainWindow::on_menu_2_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
 
 }
+void MainWindow::on_plEngB_clicked()
+{
+    this->game_->setLanguage(Game::Language::PL_ENG);
+    ui->stackedWidget->setCurrentIndex(4);
 
+}
 
-  //collections:
+void MainWindow::on_engPlB_clicked()
+{
+    this->game_->setLanguage(Game::Language::ENG_PL);
+    ui->stackedWidget->setCurrentIndex(4);
+
+}
+
+//collections:
 
 void MainWindow::on_menu_3_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
 }
 
+
+
+//learnignCollection:
+
+void MainWindow::on_menu_4_clicked()
+{
+     ui->stackedWidget->setCurrentIndex(0);
+}

@@ -28,15 +28,22 @@ private slots:
     void on_addNext_B_clicked();
 
 
- //startLearning:
-
+ //learningMode:
     void on_menu_2_clicked();
 
+    void on_plEngB_clicked();
 
-  //collections:
+    void on_engPlB_clicked();
+
+ //collections:
 
     void on_menu_3_clicked();
 
+
+//learnignCollection:
+
+
+    void on_menu_4_clicked();
 
 private:
     Ui::MainWindow *ui;

@@ -47,6 +47,12 @@ private slots:
 
 
 
+
+
+    void on_addNewCollection_clicked();
+
+    void on_AddCollection_clicked();
+
 private:
     Ui::MainWindow *ui;
     std::unique_ptr<Game> game_;

@@ -11,7 +11,10 @@ MainWindow::MainWindow(QWidget *parent) :
     game_=std::make_unique<Game>();
     ui->setupUi(this);
     ui->stackedWidget->setCurrentIndex(0);
-
+    int src;
+    sqlite3* db;
+    src=sqlite3_open("baza.db",&db);
+    game_->setDb_(db);
 }
 
 MainWindow::~MainWindow()
@@ -42,24 +45,41 @@ void MainWindow::on_menu_clicked()
 
 void MainWindow::on_saveAll_B_clicked()
 {
+
+    std::string pl=ui->polishI->text().toStdString();
+    std::string eng=ui->englishI->text().toStdString();
+    if(Card::checkCorrectnessW(pl)&&Card::checkCorrectnessW(eng))
+    {
+        this->game_->addCard(pl,eng);
+    }
+
     ui->stackedWidget->setCurrentIndex(3);
-    //TODO
+    std::vector<std::pair<int,std::string>> collections=this->game_->getCollections();
+
+    for(std::vector<std::pair<int,std::string>>::iterator i=collections.begin();i!=collections.end();++i)
+    {
+        ui->listWidget->addItem(QString::fromStdString(i->second));
+    }
+
 }
 
 void MainWindow::on_addNext_B_clicked()
 {
-
-    if(Card::checkCorrectnessW(ui->polishI->text().toStdString())&&Card::checkCorrectnessW(ui->englishI->text().toStdString()))
+    std::string pl=ui->polishI->text().toStdString();
+    std::string eng=ui->englishI->text().toStdString();
+    if(Card::checkCorrectnessW(pl)&&Card::checkCorrectnessW(eng))
     {
+        this->game_->addCard(pl,eng);
+        ui->polishI->clear();
+        ui->englishI->clear();
+        ui->stackedWidget->setCurrentIndex(1);
     }
     else
     {
         QMessageBox::information(this,tr("Błąd"),tr("Wprowadź poprawne dane"));
     }
-    //TODO
-    ui->polishI->clear();
-    ui->englishI->clear();
-    ui->stackedWidget->setCurrentIndex(1);
+
+
 
 }
 
@@ -73,14 +93,14 @@ void MainWindow::on_menu_2_clicked()
 void MainWindow::on_plEngB_clicked()
 {
     this->game_->setLanguage(Game::Language::PL_ENG);
-    ui->stackedWidget->setCurrentIndex(4);
+    ui->stackedWidget->setCurrentIndex(5);
 
 }
 
 void MainWindow::on_engPlB_clicked()
 {
     this->game_->setLanguage(Game::Language::ENG_PL);
-    ui->stackedWidget->setCurrentIndex(4);
+    ui->stackedWidget->setCurrentIndex(5);
 
 }
 
@@ -95,6 +115,12 @@ void MainWindow::on_addAllFC_clicked()
 {
     //TODO
 }
+void MainWindow::on_addNewCollection_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(4);
+
+}
+
 //learnignCollection:
 
 void MainWindow::on_menu_4_clicked()
@@ -103,3 +129,19 @@ void MainWindow::on_menu_4_clicked()
 }
 
 
+void MainWindow::on_AddCollection_clicked()
+{
+    std::string c=ui->newCollectionName->text().toStdString();
+    if(Card::checkCorrectnessW(c))
+    {
+        this->game_->addCollection(c);
+    }
+    ui->stackedWidget->setCurrentIndex(3);
+    ui->listWidget->clear();
+    std::vector<std::pair<int,std::string>> collections=this->game_->getCollections();
+
+    for(std::vector<std::pair<int,std::string>>::iterator i=collections.begin();i!=collections.end();++i)
+    {
+        ui->listWidget->addItem(QString::fromStdString(i->second));
+    }
+}

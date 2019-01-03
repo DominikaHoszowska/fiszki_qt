@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="Menu">
      <widget class="QPushButton" name="addFC_B">
@@ -103,7 +103,7 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLineEdit" name="polish_I">
+     <widget class="QLineEdit" name="polishI">
       <property name="geometry">
        <rect>
         <x>100</x>
@@ -113,7 +113,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="english_I">
+     <widget class="QLineEdit" name="englishI">
       <property name="geometry">
        <rect>
         <x>100</x>

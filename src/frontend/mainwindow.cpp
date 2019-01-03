@@ -1,6 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include"fiszki/Game.h"
+#include <string>
+#include <QMessageBox>
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -40,11 +43,23 @@ void MainWindow::on_menu_clicked()
 void MainWindow::on_saveAll_B_clicked()
 {
     ui->stackedWidget->setCurrentIndex(3);
-
+    //TODO
 }
 
 void MainWindow::on_addNext_B_clicked()
 {
+
+    if(Card::checkCorrectnessW(ui->polishI->text().toStdString())&&Card::checkCorrectnessW(ui->englishI->text().toStdString()))
+    {//TODO
+    }
+    else
+    {
+        QMessageBox::information(this,tr("Błąd"),tr("Wprowadź poprawne dane"));
+    }
+    //TODO
+    ui->polishI->clear();
+    ui->englishI->clear();
+    ui->stackedWidget->setCurrentIndex(1);
 
 }
 
@@ -76,10 +91,15 @@ void MainWindow::on_menu_3_clicked()
     ui->stackedWidget->setCurrentIndex(0);
 }
 
-
+void MainWindow::on_addAllFC_clicked()
+{
+    //TODO
+}
 //learnignCollection:
 
 void MainWindow::on_menu_4_clicked()
 {
      ui->stackedWidget->setCurrentIndex(0);
 }
+
+

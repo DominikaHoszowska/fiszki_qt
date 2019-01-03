@@ -38,12 +38,14 @@ private slots:
  //collections:
 
     void on_menu_3_clicked();
-
+    void on_addAllFC_clicked();
 
 //learnignCollection:
 
 
     void on_menu_4_clicked();
+
+
 
 private:
     Ui::MainWindow *ui;

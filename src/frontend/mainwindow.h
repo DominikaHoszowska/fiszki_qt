@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include<fiszki/Game.h>
+#include<fiszki/Session.h>
 namespace Ui {
 class MainWindow;
 }
@@ -67,10 +68,12 @@ private slots:
     void on_menu_6_clicked();
 
     //learningPage:
+    void startLearning();
 
 private:
     Ui::MainWindow *ui;
     std::unique_ptr<Game> game_;
+    std::shared_ptr<Session> session_;
 
 };
 #endif // MAINWINDOW_H

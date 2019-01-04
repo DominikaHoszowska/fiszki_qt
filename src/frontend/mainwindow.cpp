@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     game_=std::make_unique<Game>();
+    session_=nullptr;
     ui->setupUi(this);
     ui->stackedWidget->setCurrentIndex(0);
     sqlite3* db;
@@ -191,7 +192,9 @@ void MainWindow::on_selectCollectionB_clicked()
 
         ui->listWidget->clear();
         ui->stackedWidget->setCurrentIndex(6);
-
+        std::string c=i->text().toStdString();
+        session_=std::make_shared<Session>(game_->getCollection(c));
+        startLearning();
     }
     else{
         QMessageBox::information(this,tr("Błąd"),tr("Wybierz kolekcję"));
@@ -203,4 +206,8 @@ void MainWindow::on_selectCollectionB_clicked()
 void MainWindow::on_menu_6_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
+}
+void MainWindow::startLearning()
+{
+
 }

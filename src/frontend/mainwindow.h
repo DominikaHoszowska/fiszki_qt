@@ -53,6 +53,8 @@ private slots:
 
     void on_AddCollection_clicked();
 
+    void on_menu_5_clicked();
+
 private:
     Ui::MainWindow *ui;
     std::unique_ptr<Game> game_;

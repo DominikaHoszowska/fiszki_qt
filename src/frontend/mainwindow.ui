@@ -314,6 +314,19 @@
        <string>Dodaj</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="menu_5">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>0</y>
+        <width>60</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Menu</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="learnignCollection">
      <widget class="QPushButton" name="menu_4">

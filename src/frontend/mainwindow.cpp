@@ -11,9 +11,8 @@ MainWindow::MainWindow(QWidget *parent) :
     game_=std::make_unique<Game>();
     ui->setupUi(this);
     ui->stackedWidget->setCurrentIndex(0);
-    int src;
     sqlite3* db;
-    src=sqlite3_open("baza.db",&db);
+    sqlite3_open("baza.db",&db);
     game_->setDb_(db);
 }
 
@@ -113,7 +112,16 @@ void MainWindow::on_menu_3_clicked()
 
 void MainWindow::on_addAllFC_clicked()
 {
-    //TODO
+    QListWidgetItem* i=ui->listWidget->currentItem();
+    if(i)
+    {
+        game_->addCardsToCollection(i->text().toStdString());
+    }
+    else{
+        QMessageBox::information(this,tr("Błąd"),tr("Wybierz kolekcję"));
+
+    }
+
 }
 void MainWindow::on_addNewCollection_clicked()
 {
@@ -149,5 +157,11 @@ void MainWindow::on_AddCollection_clicked()
         QMessageBox::information(this,tr("Błąd"),tr("Wprowadź poprawne dane"));
     }
 
+
+}
+
+void MainWindow::on_menu_5_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
 
 }

@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="Menu">
      <widget class="QPushButton" name="addFC_B">
@@ -333,7 +333,7 @@
       <property name="geometry">
        <rect>
         <x>340</x>
-        <y>0</y>
+        <y>5</y>
         <width>60</width>
         <height>25</height>
        </rect>
@@ -342,13 +342,13 @@
        <string>Menu</string>
       </property>
      </widget>
-     <widget class="QListWidget" name="selectCollectionLIst">
+     <widget class="QListWidget" name="selectCollectionList">
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>40</y>
+        <y>45</y>
         <width>360</width>
-        <height>200</height>
+        <height>220</height>
        </rect>
       </property>
       <property name="modelColumn">
@@ -362,7 +362,7 @@
       <property name="geometry">
        <rect>
         <x>290</x>
-        <y>250</y>
+        <y>270</y>
         <width>90</width>
         <height>25</height>
        </rect>
@@ -383,14 +383,6 @@
      <height>22</height>
     </rect>
    </property>
-  </widget>
-  <widget class="QToolBar" name="mainToolBar">
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>

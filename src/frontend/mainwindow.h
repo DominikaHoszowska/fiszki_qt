@@ -24,7 +24,9 @@ private slots:
 
 //addFCC:
     void on_saveAll_B_clicked();
+
     void on_menu_clicked();
+
     void on_addNext_B_clicked();
 
 
@@ -35,25 +37,32 @@ private slots:
 
     void on_engPlB_clicked();
 
+    void selectCollectionToLearn();
+
+    void on_addNewCollection_clicked();
+
+
  //collections:
 
     void on_menu_3_clicked();
+
     void on_addAllFC_clicked();
+
+
+ //addNewCollection:
+
+    void on_AddCollection_clicked();
+
+    void on_menu_5_clicked();
+
 
 //learnignCollection:
 
 
     void on_menu_4_clicked();
 
+    void on_selectCollectionB_clicked();
 
-
-
-
-    void on_addNewCollection_clicked();
-
-    void on_AddCollection_clicked();
-
-    void on_menu_5_clicked();
 
 private:
     Ui::MainWindow *ui;

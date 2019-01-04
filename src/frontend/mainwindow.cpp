@@ -92,14 +92,25 @@ void MainWindow::on_menu_2_clicked()
 void MainWindow::on_plEngB_clicked()
 {
     this->game_->setLanguage(Game::Language::PL_ENG);
-    ui->stackedWidget->setCurrentIndex(5);
-
+    selectCollectionToLearn();
 }
 
 void MainWindow::on_engPlB_clicked()
 {
     this->game_->setLanguage(Game::Language::ENG_PL);
+    selectCollectionToLearn();
+}
+void MainWindow::selectCollectionToLearn()
+{
     ui->stackedWidget->setCurrentIndex(5);
+
+    std::vector<std::string> collections=this->game_->getCollections();
+
+    for(auto& str : collections)
+    {
+        ui->selectCollectionList->addItem(QString::fromStdString(str));
+    }
+
 
 }
 
@@ -116,6 +127,9 @@ void MainWindow::on_addAllFC_clicked()
     if(i)
     {
         game_->addCardsToCollection(i->text().toStdString());
+        ui->listWidget->clear();
+        ui->stackedWidget->setCurrentIndex(0);
+
     }
     else{
         QMessageBox::information(this,tr("Błąd"),tr("Wybierz kolekcję"));
@@ -128,14 +142,7 @@ void MainWindow::on_addNewCollection_clicked()
     ui->stackedWidget->setCurrentIndex(4);
 
 }
-
-//learnignCollection:
-
-void MainWindow::on_menu_4_clicked()
-{
-     ui->stackedWidget->setCurrentIndex(0);
-}
-
+//addNewCollection:
 
 void MainWindow::on_AddCollection_clicked()
 {
@@ -163,5 +170,32 @@ void MainWindow::on_AddCollection_clicked()
 void MainWindow::on_menu_5_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
+
+}
+
+
+//learnignCollection:
+
+void MainWindow::on_menu_4_clicked()
+{
+     ui->stackedWidget->setCurrentIndex(0);
+}
+
+
+
+void MainWindow::on_selectCollectionB_clicked()
+{
+    auto* i = ui->selectCollectionList->currentItem();
+    if(i)
+    {
+
+        ui->listWidget->clear();
+        ui->stackedWidget->setCurrentIndex(6);
+
+    }
+    else{
+        QMessageBox::information(this,tr("Błąd"),tr("Wybierz kolekcję"));
+
+    }
 
 }

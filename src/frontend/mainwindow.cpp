@@ -53,11 +53,11 @@ void MainWindow::on_saveAll_B_clicked()
     }
 
     ui->stackedWidget->setCurrentIndex(3);
-    std::vector<std::pair<int,std::string>> collections=this->game_->getCollections();
+    std::vector<std::string> collections=this->game_->getCollections();
 
-    for(std::vector<std::pair<int,std::string>>::iterator i=collections.begin();i!=collections.end();++i)
+    for(auto& str : collections)
     {
-        ui->listWidget->addItem(QString::fromStdString(i->second));
+        ui->listWidget->addItem(QString::fromStdString(str));
     }
 
 }
@@ -112,7 +112,7 @@ void MainWindow::on_menu_3_clicked()
 
 void MainWindow::on_addAllFC_clicked()
 {
-    QListWidgetItem* i=ui->listWidget->currentItem();
+    auto* i = ui->listWidget->currentItem();
     if(i)
     {
         game_->addCardsToCollection(i->text().toStdString());
@@ -145,11 +145,11 @@ void MainWindow::on_AddCollection_clicked()
         this->game_->addCollection(c);
         ui->stackedWidget->setCurrentIndex(3);
         ui->listWidget->clear();
-        std::vector<std::pair<int,std::string>> collections=this->game_->getCollections();
+        std::vector<std::string> collections=this->game_->getCollections();
 
-        for(std::vector<std::pair<int,std::string>>::iterator i=collections.begin();i!=collections.end();++i)
+        for(auto& str : collections)
         {
-            ui->listWidget->addItem(QString::fromStdString(i->second));
+            ui->listWidget->addItem(QString::fromStdString(str));
         }
     }
     else

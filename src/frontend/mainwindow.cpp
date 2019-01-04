@@ -199,3 +199,8 @@ void MainWindow::on_selectCollectionB_clicked()
     }
 
 }
+//learningPage:
+void MainWindow::on_menu_6_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}

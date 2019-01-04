@@ -64,9 +64,13 @@ private slots:
     void on_selectCollectionB_clicked();
 
 
+    void on_menu_6_clicked();
+
+    //learningPage:
+
 private:
     Ui::MainWindow *ui;
     std::unique_ptr<Game> game_;
-};
 
+};
 #endif // MAINWINDOW_H

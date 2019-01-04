@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>6</number>
     </property>
     <widget class="QWidget" name="Menu">
      <widget class="QPushButton" name="addFC_B">
@@ -369,6 +369,21 @@
       </property>
       <property name="text">
        <string>Wybierz</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="learningPage">
+     <widget class="QPushButton" name="menu_6">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>5</y>
+        <width>60</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Menu</string>
       </property>
      </widget>
     </widget>

@@ -48,18 +48,32 @@ void MainWindow::on_saveAll_B_clicked()
 
     std::string pl=ui->polishI->text().toStdString();
     std::string eng=ui->englishI->text().toStdString();
-    if(Card::checkCorrectnessW(pl)&&Card::checkCorrectnessW(eng))
+    if((pl.empty()||eng.empty())&&game_->ifCardsToAddIsEmpty())
     {
-        this->game_->addCard(pl,eng);
-    }
-    ui->polishI->clear();
-    ui->englishI->clear();
-    ui->stackedWidget->setCurrentIndex(3);
-    std::vector<std::string> collections=this->game_->getCollections();
+        QMessageBox::information(this,tr("Błąd"),tr("Brak kart do dodania"));
+        ui->stackedWidget->setCurrentIndex(0);
 
-    for(auto& str : collections)
-    {
-        ui->listWidget->addItem(QString::fromStdString(str));
+    }
+    else{
+        if(Card::checkCorrectnessW(pl)&&Card::checkCorrectnessW(eng))
+        {
+            this->game_->addCard(pl,eng);
+            ui->polishI->clear();
+            ui->englishI->clear();
+            ui->stackedWidget->setCurrentIndex(3);
+            std::vector<std::string> collections=this->game_->getCollections();
+
+            for(auto& str : collections)
+            {
+                ui->listWidget->addItem(QString::fromStdString(str));
+            }
+        }
+        else
+        {
+            QMessageBox::information(this,tr("Błąd"),tr("Wprowadź poprawne dane"));
+        }
+
+
     }
 
 }
@@ -120,6 +134,7 @@ void MainWindow::selectCollectionToLearn()
 
 void MainWindow::on_menu_3_clicked()
 {
+    ui->listWidget->clear();
     ui->stackedWidget->setCurrentIndex(0);
 }
 
@@ -141,6 +156,7 @@ void MainWindow::on_addAllFC_clicked()
 }
 void MainWindow::on_addNewCollection_clicked()
 {
+    ui->listWidget->clear();
     ui->stackedWidget->setCurrentIndex(4);
 
 }

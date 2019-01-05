@@ -52,7 +52,8 @@ void MainWindow::on_saveAll_B_clicked()
     {
         this->game_->addCard(pl,eng);
     }
-
+    ui->polishI->clear();
+    ui->englishI->clear();
     ui->stackedWidget->setCurrentIndex(3);
     std::vector<std::string> collections=this->game_->getCollections();
 
@@ -209,5 +210,6 @@ void MainWindow::on_menu_6_clicked()
 }
 void MainWindow::startLearning()
 {
-
+    session_->updateCardsToLearn();
+//TODO
 }

@@ -41,3 +41,5 @@ HEADERS
 FORMS += \
         src/frontend/mainwindow.ui
 
+DISTFILES +=
+

@@ -3,7 +3,7 @@
 #include"fiszki/Game.h"
 #include <string>
 #include <QMessageBox>
-
+#include<QIcon>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -68,11 +68,22 @@ void MainWindow::on_saveAll_B_clicked()
 
     std::string pl=ui->polishI->text().toStdString();
     std::string eng=ui->englishI->text().toStdString();
-    if((pl.empty()||eng.empty())&&game_->ifCardsToAddIsEmpty())
+    if(pl.empty()||eng.empty())
     {
-        QMessageBox::information(this,tr("Błąd"),tr("Brak kart do dodania"));
-        ui->stackedWidget->setCurrentIndex(0);
+        if(game_->ifCardsToAddIsEmpty()){
+            QMessageBox::information(this,tr("Błąd"),tr("Brak kart do dodania"));
+            ui->stackedWidget->setCurrentIndex(0);
+        }
+        else{
+            ui->stackedWidget->setCurrentIndex(3);
+            std::vector<std::string> collections=this->game_->getCollections();
 
+            for(auto& str : collections)
+            {
+                ui->listWidget->addItem(QString::fromStdString(str));
+            }
+
+        }
     }
     else{
         if(Card::checkCorrectnessW(pl)&&Card::checkCorrectnessW(eng))
@@ -202,7 +213,7 @@ void MainWindow::on_addNewCollection_clicked()
 void MainWindow::on_AddCollection_clicked()
 {
     std::string c=ui->newCollectionName->text().toStdString();
-    if(Card::checkCorrectnessW(c))
+    if(Collection::checkCorrectnessC(c))
     {
         if(game_->ifCollectionNameUnique(c)){
             this->game_->addCollection(c);
@@ -283,5 +294,19 @@ void MainWindow::on_menu_6_clicked()
 void MainWindow::startLearning()
 {
     session_->updateCardsToLearn();
+    QPixmap ok("OK.png");
+    QIcon ButtonIcon(ok);
+    ui->goodButton->setIcon(ButtonIcon);
+    ui->goodButton->setIconSize(ok.rect().size());
+    QPixmap bad("BAD.png");
+    QIcon ButtonIconBad(bad);
+    ui->badButton->setIcon(ButtonIconBad);
+    ui->badButton->setIconSize(bad.rect().size());
+    QPixmap medium("medium.png");
+    QIcon ButtonIconM(medium);
+    ui->mediumButton->setIcon(ButtonIconM);
+    ui->mediumButton->setIconSize(medium.rect().size());
+
+
 //TODO
 }

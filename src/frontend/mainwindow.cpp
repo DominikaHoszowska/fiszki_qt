@@ -39,8 +39,28 @@ void MainWindow::on_startLearning_B_clicked()
 
 void MainWindow::on_menu_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(0);
+    if(!game_->ifCardsToAddIsEmpty()){
+        QMessageBox msgBox;
+        msgBox.setText("Czy na pewno chcesz wrócić do menu?");
+        msgBox.setInformativeText(" Zostaną utracone wszystkie niezapisane zmiany");
+        QAbstractButton *myYesButton=msgBox.addButton("Tak",QMessageBox::YesRole);
+        msgBox.addButton("Nie",QMessageBox::NoRole);
+        msgBox.setIcon(QMessageBox::Question);
+        msgBox.setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
 
+        msgBox.exec();
+        if(msgBox.clickedButton()==myYesButton)
+        {
+            game_->clearCardsToAdd();
+            ui->polishI->clear();
+            ui->englishI->clear();
+            ui->stackedWidget->setCurrentIndex(0);
+
+        }
+    }
+    else{
+        ui->stackedWidget->setCurrentIndex(0);
+    }
 }
 
 void MainWindow::on_saveAll_B_clicked()
@@ -134,8 +154,25 @@ void MainWindow::selectCollectionToLearn()
 
 void MainWindow::on_menu_3_clicked()
 {
-    ui->listWidget->clear();
-    ui->stackedWidget->setCurrentIndex(0);
+
+    QMessageBox msgBox;
+    msgBox.setText("Czy na pewno chcesz wrócić do menu? ");
+    msgBox.setInformativeText("Zostaną utracone wszystkie niezapisane zmiany");
+    QAbstractButton *myYesButton=msgBox.addButton("Tak",QMessageBox::YesRole);
+    msgBox.addButton("Nie",QMessageBox::NoRole);
+    msgBox.setIcon(QMessageBox::Question);
+    msgBox.setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
+
+    msgBox.exec();
+    if(msgBox.clickedButton()==myYesButton)
+    {
+        game_->clearCardsToAdd();
+        ui->listWidget->clear();
+        ui->stackedWidget->setCurrentIndex(0);
+
+    }
+
+
 }
 
 void MainWindow::on_addAllFC_clicked()
@@ -167,14 +204,20 @@ void MainWindow::on_AddCollection_clicked()
     std::string c=ui->newCollectionName->text().toStdString();
     if(Card::checkCorrectnessW(c))
     {
-        this->game_->addCollection(c);
-        ui->stackedWidget->setCurrentIndex(3);
-        ui->listWidget->clear();
-        std::vector<std::string> collections=this->game_->getCollections();
+        if(game_->ifCollectionNameUnique(c)){
+            this->game_->addCollection(c);
+            ui->stackedWidget->setCurrentIndex(3);
+            ui->listWidget->clear();
+            std::vector<std::string> collections=this->game_->getCollections();
 
-        for(auto& str : collections)
-        {
-            ui->listWidget->addItem(QString::fromStdString(str));
+            for(auto& str : collections)
+            {
+                ui->listWidget->addItem(QString::fromStdString(str));
+            }
+        }
+        else{
+            QMessageBox::information(this,tr("Błąd"),tr("Nazwa kolekcji musi być unikalna"));
+
         }
     }
     else
@@ -187,8 +230,21 @@ void MainWindow::on_AddCollection_clicked()
 
 void MainWindow::on_menu_5_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(0);
+    QMessageBox msgBox;
+    msgBox.setText("Czy na pewno chcesz wrócić do menu? ");
+    msgBox.setInformativeText("Zostaną utracone wszystkie niezapisane zmiany");
+    QAbstractButton *myYesButton=msgBox.addButton("Tak",QMessageBox::YesRole);
+    msgBox.addButton("Nie",QMessageBox::NoRole);
+    msgBox.setIcon(QMessageBox::Question);
+    msgBox.setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
 
+    msgBox.exec();
+    if(msgBox.clickedButton()==myYesButton)
+    {
+        game_->clearCardsToAdd();
+        ui->listWidget->clear();
+        ui->stackedWidget->setCurrentIndex(0);
+    }
 }
 
 

@@ -69,6 +69,7 @@ private slots:
 
     //learningPage:
     void startLearning();
+    void showCard(std::shared_ptr<Card>);
 
 private:
     Ui::MainWindow *ui;

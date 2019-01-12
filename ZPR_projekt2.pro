@@ -11,7 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = ZPR_projekt2
 TEMPLATE = app
 
-LIBS += -lfiszki -lsqlite3 -ldl
+LIBS += -lfiszki -lsqlite3 -ldl -lboost_date_time
 
 INCLUDEPATH += /home/dominika/CLionProjects/Fiszki/src/
 

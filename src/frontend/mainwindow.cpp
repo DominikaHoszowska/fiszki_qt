@@ -15,6 +15,8 @@ MainWindow::MainWindow(QWidget *parent) :
     sqlite3* db;
     sqlite3_open("baza.db",&db);
     game_->setDb_(db);
+    setlocale( LC_ALL, "polish" );
+
 }
 
 MainWindow::~MainWindow()
@@ -293,7 +295,7 @@ void MainWindow::on_menu_6_clicked()
 }
 void MainWindow::startLearning()
 {
-    session_->updateCardsToLearn();
+
     QPixmap ok("OK.png");
     QIcon ButtonIcon(ok);
     ui->goodButton->setIcon(ButtonIcon);
@@ -306,7 +308,17 @@ void MainWindow::startLearning()
     QIcon ButtonIconM(medium);
     ui->mediumButton->setIcon(ButtonIconM);
     ui->mediumButton->setIconSize(medium.rect().size());
+    std::shared_ptr<Card> c;
+    c=session_->giveNextCard();
+        showCard(c);
 
 
-//TODO
+
+}
+void MainWindow::showCard(std::shared_ptr<Card> c)
+{
+    if(game_->getLanguage_()==Game::Language::PL_ENG)
+    {
+        ui->QuestionLabel->setText(QString::fromStdString(c->getPl_()));
+    }
 }

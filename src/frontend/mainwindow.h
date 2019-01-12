@@ -69,12 +69,25 @@ private slots:
 
     //learningPage:
     void startLearning();
-    void showCard(std::shared_ptr<Card>);
+    void showCard();
 
+    void on_goodButton_clicked();
+
+    void on_mediumButton_clicked();
+
+    void on_badButton_clicked();
+    void VisibleButtonsAndLabel(bool);
+
+
+    void on_checkButton_clicked();
+
+    void on_okGoToMenu_clicked();
+    void summarise();
 private:
     Ui::MainWindow *ui;
     std::unique_ptr<Game> game_;
     std::shared_ptr<Session> session_;
+    std::shared_ptr<Card> actualCard_;
 
 };
 #endif // MAINWINDOW_H

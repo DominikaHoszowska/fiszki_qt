@@ -275,11 +275,11 @@ void MainWindow::on_selectCollectionB_clicked()
     auto* i = ui->selectCollectionList->currentItem();
     if(i)
     {
-
-        ui->listWidget->clear();
         ui->stackedWidget->setCurrentIndex(6);
         std::string c=i->text().toStdString();
         session_=std::make_shared<Session>(game_->getCollection(c));
+
+        ui->selectCollectionList->clear();
         startLearning();
     }
     else{
@@ -291,8 +291,19 @@ void MainWindow::on_selectCollectionB_clicked()
 //learningPage:
 void MainWindow::on_menu_6_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(0);
+    summarise();
 }
+void MainWindow:: VisibleButtonsAndLabel(bool b)
+{
+    ui->goodButton->setVisible(b);
+    ui->mediumButton->setVisible(b);
+    ui->badButton->setVisible(b);
+    ui->goodLabel->setVisible(b);
+    ui->mediumLabel->setVisible(b);
+    ui->badLebel->setVisible(b);
+
+}
+
 void MainWindow::startLearning()
 {
 
@@ -308,17 +319,73 @@ void MainWindow::startLearning()
     QIcon ButtonIconM(medium);
     ui->mediumButton->setIcon(ButtonIconM);
     ui->mediumButton->setIconSize(medium.rect().size());
-    std::shared_ptr<Card> c;
-    c=session_->giveNextCard();
-        showCard(c);
+    showCard();
+
 
 
 
 }
-void MainWindow::showCard(std::shared_ptr<Card> c)
+void MainWindow::showCard()
+{
+    actualCard_=session_->giveNextCard();
+    VisibleButtonsAndLabel(false);
+   ui->checkButton->setVisible(true);
+    if(game_->getLanguage_()==Game::Language::PL_ENG)
+    {
+        ui->QuestionLabel->setText(QString::fromStdString(actualCard_->getPl_()));
+    }
+    else
+    {
+        ui->QuestionLabel->setText(QString::fromStdString(actualCard_->getEng_()));
+
+    }
+}
+void MainWindow::on_checkButton_clicked()
 {
     if(game_->getLanguage_()==Game::Language::PL_ENG)
     {
-        ui->QuestionLabel->setText(QString::fromStdString(c->getPl_()));
+        ui->AnswerLabel->setText(QString::fromStdString(actualCard_->getEng_()));
     }
+    else
+    {
+        ui->AnswerLabel->setText(QString::fromStdString(actualCard_->getPl_()));
+
+    }
+    ui->checkButton->setVisible(false);
+    VisibleButtonsAndLabel(true);
+}
+void MainWindow::on_goodButton_clicked()
+{
+    session_->takeAnswer(actualCard_,Session::Answer::GOOD);
+    showCard();
+}
+
+void MainWindow::on_mediumButton_clicked()
+{
+    session_->takeAnswer(actualCard_,Session::Answer::MEDIUM);
+    showCard();
+
+}
+
+void MainWindow::on_badButton_clicked()
+{
+    session_->takeAnswer(actualCard_,Session::Answer::BAD);
+    showCard();
+
+}
+
+void MainWindow:: summarise(){
+    ui->stackedWidget->setCurrentIndex(7);
+    ui->allCardsNumber->setText(QString::fromStdString(std::to_string(session_->getAllAnswers())));
+    ui->goodCardsNumber->setText(QString::fromStdString(std::to_string(session_->getGood_())));
+    ui->badCardsNumber->setText(QString::fromStdString(std::to_string(session_->getBad_())));
+    ui->mediumCardsNumber->setText(QString::fromStdString(std::to_string(session_->getMedium_())));
+
+}
+
+
+void MainWindow::on_okGoToMenu_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+
 }

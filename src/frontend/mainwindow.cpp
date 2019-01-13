@@ -275,12 +275,20 @@ void MainWindow::on_selectCollectionB_clicked()
     auto* i = ui->selectCollectionList->currentItem();
     if(i)
     {
-        ui->stackedWidget->setCurrentIndex(6);
         std::string c=i->text().toStdString();
         session_=std::make_shared<Session>(game_->getCollection(c));
+        if(!session_->getNumberOfCards())
+        {
+            QMessageBox::information(this,tr("Gratulacje!"),tr("Umiesz już wszystkie karty z tej kolekcji"));
+            ui->stackedWidget->setCurrentIndex(0);
 
-        ui->selectCollectionList->clear();
+        }
+        else{
+        ui->stackedWidget->setCurrentIndex(6);
+
         startLearning();
+        }
+
     }
     else{
         QMessageBox::information(this,tr("Błąd"),tr("Wybierz kolekcję"));

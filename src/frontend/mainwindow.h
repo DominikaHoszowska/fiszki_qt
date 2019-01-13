@@ -87,7 +87,7 @@ private:
     Ui::MainWindow *ui;
     std::unique_ptr<Game> game_;
     std::shared_ptr<Session> session_;
-    std::shared_ptr<Card> actualCard_;
+    std::shared_ptr<CardSession> actualCard_;
 
 };
 #endif // MAINWINDOW_H

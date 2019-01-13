@@ -328,27 +328,37 @@ void MainWindow::startLearning()
 void MainWindow::showCard()
 {
     actualCard_=session_->giveNextCard();
-    VisibleButtonsAndLabel(false);
-   ui->checkButton->setVisible(true);
-    if(game_->getLanguage_()==Game::Language::PL_ENG)
+    if(actualCard_!=nullptr)
     {
-        ui->QuestionLabel->setText(QString::fromStdString(actualCard_->getPl_()));
+        VisibleButtonsAndLabel(false);
+        ui->checkButton->setVisible(true);
+        if(game_->getLanguage_()==Game::Language::PL_ENG)
+        {
+            ui->QuestionLabel->setText(QString::fromStdString(actualCard_->getCard_()->getPl_()));
+
+        }
+        else
+        {
+            ui->QuestionLabel->setText(QString::fromStdString(actualCard_->getCard_()->getEng_()));
+
+        }
+        ui->AnswerLabel->setText(QString::fromStdString(""));
+
     }
     else
     {
-        ui->QuestionLabel->setText(QString::fromStdString(actualCard_->getEng_()));
-
+        summarise();
     }
 }
 void MainWindow::on_checkButton_clicked()
 {
     if(game_->getLanguage_()==Game::Language::PL_ENG)
     {
-        ui->AnswerLabel->setText(QString::fromStdString(actualCard_->getEng_()));
+        ui->AnswerLabel->setText(QString::fromStdString(actualCard_->getCard_()->getEng_()));
     }
     else
     {
-        ui->AnswerLabel->setText(QString::fromStdString(actualCard_->getPl_()));
+        ui->AnswerLabel->setText(QString::fromStdString(actualCard_->getCard_()->getPl_()));
 
     }
     ui->checkButton->setVisible(false);

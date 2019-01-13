@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+﻿#include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include"fiszki/Game.h"
 #include <string>
@@ -27,19 +27,19 @@ MainWindow::~MainWindow()
 //menu:
 
 
-void MainWindow::on_addFC_B_clicked()
+void MainWindow::on_addFCButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
 }
 
-void MainWindow::on_startLearning_B_clicked()
+void MainWindow::on_startLearningButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(2);
 
 }
 //addFCC:
 
-void MainWindow::on_menu_clicked()
+void MainWindow::on_menuButton_clicked()
 {
     if(!game_->ifCardsToAddIsEmpty()){
         QMessageBox msgBox;
@@ -54,8 +54,8 @@ void MainWindow::on_menu_clicked()
         if(msgBox.clickedButton()==myYesButton)
         {
             game_->clearCardsToAdd();
-            ui->polishI->clear();
-            ui->englishI->clear();
+            ui->polishInputLine->clear();
+            ui->englishInputLine->clear();
             ui->stackedWidget->setCurrentIndex(0);
 
         }
@@ -65,11 +65,11 @@ void MainWindow::on_menu_clicked()
     }
 }
 
-void MainWindow::on_saveAll_B_clicked()
+void MainWindow::on_addFCSaveAllFCButton_clicked()
 {
 
-    std::string pl=ui->polishI->text().toStdString();
-    std::string eng=ui->englishI->text().toStdString();
+    std::string pl=ui->polishInputLine->text().toStdString();
+    std::string eng=ui->englishInputLine->text().toStdString();
     if(pl.empty()||eng.empty())
     {
         if(game_->ifCardsToAddIsEmpty()){
@@ -91,8 +91,8 @@ void MainWindow::on_saveAll_B_clicked()
         if(Card::checkCorrectnessW(pl)&&Card::checkCorrectnessW(eng))
         {
             this->game_->addCard(pl,eng);
-            ui->polishI->clear();
-            ui->englishI->clear();
+            ui->polishInputLine->clear();
+            ui->englishInputLine->clear();
             ui->stackedWidget->setCurrentIndex(3);
             std::vector<std::string> collections=this->game_->getCollections();
 
@@ -111,15 +111,15 @@ void MainWindow::on_saveAll_B_clicked()
 
 }
 
-void MainWindow::on_addNext_B_clicked()
+void MainWindow::on_addNextFCButton_clicked()
 {
-    std::string pl=ui->polishI->text().toStdString();
-    std::string eng=ui->englishI->text().toStdString();
+    std::string pl=ui->polishInputLine->text().toStdString();
+    std::string eng=ui->englishInputLine->text().toStdString();
     if(Card::checkCorrectnessW(pl)&&Card::checkCorrectnessW(eng))
     {
         this->game_->addCard(pl,eng);
-        ui->polishI->clear();
-        ui->englishI->clear();
+        ui->polishInputLine->clear();
+        ui->englishInputLine->clear();
         ui->stackedWidget->setCurrentIndex(1);
     }
     else
@@ -133,18 +133,18 @@ void MainWindow::on_addNext_B_clicked()
 
  //learningMode:
 
-void MainWindow::on_menu_2_clicked()
+void MainWindow::on_menu2Button_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
 
 }
-void MainWindow::on_plEngB_clicked()
+void MainWindow::on_plEngButton_clicked()
 {
     this->game_->setLanguage(Game::Language::PL_ENG);
     selectCollectionToLearn();
 }
 
-void MainWindow::on_engPlB_clicked()
+void MainWindow::on_engPlButton_clicked()
 {
     this->game_->setLanguage(Game::Language::ENG_PL);
     selectCollectionToLearn();
@@ -165,7 +165,7 @@ void MainWindow::selectCollectionToLearn()
 
 //collections:
 
-void MainWindow::on_menu_3_clicked()
+void MainWindow::on_menu3Button_clicked()
 {
 
     QMessageBox msgBox;
@@ -188,7 +188,7 @@ void MainWindow::on_menu_3_clicked()
 
 }
 
-void MainWindow::on_addAllFC_clicked()
+void MainWindow::on_addAllFCButton_clicked()
 {
     auto* i = ui->listWidget->currentItem();
     if(i)
@@ -204,7 +204,7 @@ void MainWindow::on_addAllFC_clicked()
     }
 
 }
-void MainWindow::on_addNewCollection_clicked()
+void MainWindow::on_addNewCollectionButton_clicked()
 {
     ui->listWidget->clear();
     ui->stackedWidget->setCurrentIndex(4);
@@ -241,7 +241,7 @@ void MainWindow::on_AddCollection_clicked()
 
 }
 
-void MainWindow::on_menu_5_clicked()
+void MainWindow::on_menu5Button_clicked()
 {
     QMessageBox msgBox;
     msgBox.setText("Czy na pewno chcesz wrócić do menu? ");
@@ -263,14 +263,15 @@ void MainWindow::on_menu_5_clicked()
 
 //learnignCollection:
 
-void MainWindow::on_menu_4_clicked()
+void MainWindow::on_menu4Button_clicked()
 {
+       ui->selectCollectionList->clear();
      ui->stackedWidget->setCurrentIndex(0);
 }
 
 
 
-void MainWindow::on_selectCollectionB_clicked()
+void MainWindow::on_learningSelectCollectionButton_clicked()
 {
     auto* i = ui->selectCollectionList->currentItem();
     if(i)
@@ -297,7 +298,7 @@ void MainWindow::on_selectCollectionB_clicked()
 
 }
 //learningPage:
-void MainWindow::on_menu_6_clicked()
+void MainWindow::on_menu6Button_clicked()
 {
     summarise();
 }
@@ -407,3 +408,6 @@ void MainWindow::on_okGoToMenu_clicked()
     ui->stackedWidget->setCurrentIndex(0);
 
 }
+
+
+

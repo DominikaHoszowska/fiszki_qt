@@ -18,10 +18,10 @@
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>7</number>
+       <number>4</number>
       </property>
-      <widget class="QWidget" name="Menu">
-       <widget class="QPushButton" name="addFC_B">
+      <widget class="QWidget" name="MenuPage">
+       <widget class="QPushButton" name="addFCButton">
         <property name="geometry">
          <rect>
           <x>25</x>
@@ -34,7 +34,7 @@
          <string>Dodaj fiszkę</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="startLearning_B">
+       <widget class="QPushButton" name="startLearningButton">
         <property name="geometry">
          <rect>
           <x>225</x>
@@ -48,8 +48,8 @@
         </property>
        </widget>
       </widget>
-      <widget class="QWidget" name="addFCC">
-       <widget class="QPushButton" name="menu">
+      <widget class="QWidget" name="addFCCPage">
+       <widget class="QPushButton" name="menuButton">
         <property name="geometry">
          <rect>
           <x>340</x>
@@ -62,7 +62,7 @@
          <string>Menu</string>
         </property>
        </widget>
-       <widget class="QLabel" name="polish_T">
+       <widget class="QLabel" name="polishLabel">
         <property name="geometry">
          <rect>
           <x>160</x>
@@ -81,7 +81,7 @@
          <set>Qt::AlignCenter</set>
         </property>
        </widget>
-       <widget class="QLabel" name="english_T">
+       <widget class="QLabel" name="englishLabel">
         <property name="geometry">
          <rect>
           <x>160</x>
@@ -97,7 +97,7 @@
          <set>Qt::AlignCenter</set>
         </property>
        </widget>
-       <widget class="QLineEdit" name="polishI">
+       <widget class="QLineEdit" name="polishInputLine">
         <property name="geometry">
          <rect>
           <x>100</x>
@@ -107,7 +107,7 @@
          </rect>
         </property>
        </widget>
-       <widget class="QLineEdit" name="englishI">
+       <widget class="QLineEdit" name="englishInputLine">
         <property name="geometry">
          <rect>
           <x>100</x>
@@ -117,7 +117,7 @@
          </rect>
         </property>
        </widget>
-       <widget class="QPushButton" name="addNext_B">
+       <widget class="QPushButton" name="addNextFCButton">
         <property name="geometry">
          <rect>
           <x>140</x>
@@ -130,7 +130,7 @@
          <string>Dodaj kolejną</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="saveAll_B">
+       <widget class="QPushButton" name="addFCSaveAllFCButton">
         <property name="geometry">
          <rect>
           <x>140</x>
@@ -144,8 +144,8 @@
         </property>
        </widget>
       </widget>
-      <widget class="QWidget" name="learningMode">
-       <widget class="QPushButton" name="menu_2">
+      <widget class="QWidget" name="learningModePage">
+       <widget class="QPushButton" name="menu2Button">
         <property name="geometry">
          <rect>
           <x>340</x>
@@ -158,7 +158,7 @@
          <string>Menu</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="plEngB">
+       <widget class="QPushButton" name="plEngButton">
         <property name="geometry">
          <rect>
           <x>100</x>
@@ -171,7 +171,7 @@
          <string>polski-&gt;angielski</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="engPlB">
+       <widget class="QPushButton" name="engPlButton">
         <property name="geometry">
          <rect>
           <x>100</x>
@@ -184,7 +184,7 @@
          <string>angielski-&gt;polski</string>
         </property>
        </widget>
-       <widget class="QLabel" name="label">
+       <widget class="QLabel" name="selectLearningMode">
         <property name="geometry">
          <rect>
           <x>100</x>
@@ -206,8 +206,8 @@
         </property>
        </widget>
       </widget>
-      <widget class="QWidget" name="collections">
-       <widget class="QPushButton" name="menu_3">
+      <widget class="QWidget" name="collectionsPage">
+       <widget class="QPushButton" name="menu3Button">
         <property name="geometry">
          <rect>
           <x>340</x>
@@ -220,7 +220,7 @@
          <string>Menu</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="addAllFC">
+       <widget class="QPushButton" name="addAllFCButton">
         <property name="geometry">
          <rect>
           <x>220</x>
@@ -233,7 +233,7 @@
          <string>Zapisz</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="addNewCollection">
+       <widget class="QPushButton" name="addNewCollectionButton">
         <property name="geometry">
          <rect>
           <x>20</x>
@@ -263,7 +263,7 @@
         </property>
        </widget>
       </widget>
-      <widget class="QWidget" name="addNewCollection_2">
+      <widget class="QWidget" name="addNewCollectionPage">
        <widget class="QLineEdit" name="newCollectionName">
         <property name="geometry">
          <rect>
@@ -274,7 +274,7 @@
          </rect>
         </property>
        </widget>
-       <widget class="QLabel" name="Nazwa">
+       <widget class="QLabel" name="Name">
         <property name="geometry">
          <rect>
           <x>100</x>
@@ -308,7 +308,7 @@
          <string>Dodaj</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="menu_5">
+       <widget class="QPushButton" name="menu5Button">
         <property name="geometry">
          <rect>
           <x>340</x>
@@ -323,7 +323,7 @@
        </widget>
       </widget>
       <widget class="QWidget" name="learningCollectionPage">
-       <widget class="QPushButton" name="menu_4">
+       <widget class="QPushButton" name="menu4Button">
         <property name="geometry">
          <rect>
           <x>340</x>
@@ -352,7 +352,7 @@
          <number>-1</number>
         </property>
        </widget>
-       <widget class="QPushButton" name="selectCollectionB">
+       <widget class="QPushButton" name="learningSelectCollectionButton">
         <property name="geometry">
          <rect>
           <x>290</x>
@@ -367,7 +367,7 @@
        </widget>
       </widget>
       <widget class="QWidget" name="learningPage">
-       <widget class="QPushButton" name="menu_6">
+       <widget class="QPushButton" name="menu6Button">
         <property name="geometry">
          <rect>
           <x>340</x>

@@ -19,53 +19,53 @@ public:
 private slots:
 //menu:
 
-    void on_addFC_B_clicked();
+    void on_addFCButton_clicked();
 
-    void on_startLearning_B_clicked();
+    void on_startLearningButton_clicked();
 
 //addFCC:
-    void on_saveAll_B_clicked();
+    void on_addFCSaveAllFCButton_clicked();
 
-    void on_menu_clicked();
+    void on_menuButton_clicked();
 
-    void on_addNext_B_clicked();
+    void on_addNextFCButton_clicked();
 
 
  //learningMode:
-    void on_menu_2_clicked();
+    void on_menu2Button_clicked();
 
-    void on_plEngB_clicked();
+    void on_plEngButton_clicked();
 
-    void on_engPlB_clicked();
+    void on_engPlButton_clicked();
 
     void selectCollectionToLearn();
 
-    void on_addNewCollection_clicked();
+    void on_addNewCollectionButton_clicked();
 
 
  //collections:
 
-    void on_menu_3_clicked();
+    void on_menu3Button_clicked();
 
-    void on_addAllFC_clicked();
+    void on_addAllFCButton_clicked();
 
 
  //addNewCollection:
 
     void on_AddCollection_clicked();
 
-    void on_menu_5_clicked();
+    void on_menu5Button_clicked();
 
 
 //learnignCollection:
 
 
-    void on_menu_4_clicked();
+    void on_menu4Button_clicked();
 
-    void on_selectCollectionB_clicked();
+    void on_learningSelectCollectionButton_clicked();
 
 
-    void on_menu_6_clicked();
+    void on_menu6Button_clicked();
 
     //learningPage:
     void startLearning();
@@ -83,6 +83,7 @@ private slots:
 
     void on_okGoToMenu_clicked();
     void summarise();
+
 private:
     Ui::MainWindow *ui;
     std::unique_ptr<Game> game_;

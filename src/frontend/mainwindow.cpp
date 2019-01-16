@@ -8,13 +8,11 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    game_=std::make_unique<Game>();
+    std::string s("baza.db");
+    game_=std::make_unique<Game>(s);
     session_=nullptr;
     ui->setupUi(this);
     ui->stackedWidget->setCurrentIndex(0);
-    sqlite3* db;
-    sqlite3_open("baza.db",&db);
-    game_->setDb_(db);
     setlocale( LC_ALL, "polish" );
 
 }
@@ -278,7 +276,7 @@ void MainWindow::on_learningSelectCollectionButton_clicked()
     {
         std::string c=i->text().toStdString();
         session_=std::make_shared<Session>(game_->getCollection(c));
-        if(!session_->getNumberOfCards())
+        if(!session_->cardsAreNotNull())
         {
             QMessageBox::information(this,tr("Gratulacje!"),tr("Umiesz już wszystkie karty z tej kolekcji"));
             ui->stackedWidget->setCurrentIndex(0);
